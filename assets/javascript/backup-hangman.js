@@ -14,12 +14,26 @@ $(document).ready(function() {
 
 //Initialize
 var wordList = ["cat", "dog", "monkey", "bird", "antelope", "bear", "elk", "rat", "mouse", "pigeon", "hamster", "marmoset"];
-var wordToGuess;
-var wordArray;
+var wordToGuess = wordList[Math.floor(Math.random()*((wordList.length-1)-1+1)+1)]; //pick random 1-4 change to length of wordlist
+
+console.log(wordToGuess);
+var wordArray = Array(wordToGuess.length); //Create array same length as word
+
 var wins = 0;
 var guessesLeft = 7;
 
-reset();
+$("#guesses-left").text(guessesLeft);
+
+$("#hangman-ascii").html(hangmanStages[guessesLeft]); //create initial hangman
+
+//Create Word Blanks
+for ( var i=0; i < wordToGuess.length; i +=1){
+    var blankLetter = $("<span>");
+    blankLetter.addClass("letter");
+    blankLetter.addClass(`letter-${i}`);
+    blankLetter.text("_");
+    $("#word").append(blankLetter);
+}
 
 //Get user guess
 document.onkeyup = function(event) {
