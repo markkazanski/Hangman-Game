@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/javascript/hangman.js"></script>
+
+    <title>Hangman Game by Mark Kazanski</title>
+</head>
+<body>
+    <h1>Hangman Game by Mark Kazanski</h1>
+    <p>Press any key to get started.</p>
+
+    <p id="hangman-ascii">_____<br />
+        &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
+        &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <br />
+        &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/|\<br />
+        &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
+        &nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ \<br />
+        _|_<br />
+        |&nbsp;&nbsp;&nbsp;&nbsp;|________<br />
+        |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />
+        |__________|</p>
+
+    <p>Wins: <span id="wins"></span></p>
+    <p>The Word: <span id="word"></span></p>
+    <p>Letters Guessed: <span id="guessed"></span></p>
+</body>
+</html>
+
+<!--
+_______
+|    |      Phrase #:    2
+|    o      Guessed : abcmtwxyz
+|   /|\     Average :  50%
+|    |
+|   / \
+_|_
+|   |______
+|          |
+|__________|
+-->
