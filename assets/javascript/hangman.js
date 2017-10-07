@@ -20,7 +20,9 @@ var wordArray = Array(wordToGuess.length); //Create array same length as word
 var wins = 0;
 var guessesLeft = 7;
 
-$("#guessesLeft").text(guessesLeft);
+$("#guesses-left").text(guessesLeft);
+
+$("#hangman-ascii").html(hangmanStages[guessesLeft]); //create initial hangman
 
 //Create Word Blanks
 for ( var i=0; i < wordToGuess.length; i +=1){
@@ -63,7 +65,8 @@ if( wordArray.join("") != wordToGuess ){
                 }else{
                     console.log("Wrong");
                     guessesLeft--;
-                    $("#guessesLeft").text( guessesLeft );
+                    $("#guesses-left").text( guessesLeft );
+                    $("#hangman-ascii").html(hangmanStages[guessesLeft]);
                 }
             }
             guessedLetters.push(userGuess); //add guess to guessed letter list
