@@ -13,8 +13,10 @@ function remove(array, element) { //remove element from array
 $(document).ready(function() {
 
 //Initialize
-var wordList = ["cat", "dog", "monkey", "bird", "ostritch"];
-var wordToGuess = wordList[Math.floor(Math.random()*(4-1+1)+1)]; //pick random 1-4 change to length of wordlist
+var wordList = ["cat", "dog", "monkey", "bird", "antelope", "bear", "elk", "rat", "mouse", "pigeon", "hamster", "marmoset"];
+var wordToGuess = wordList[Math.floor(Math.random()*((wordList.length-1)-1+1)+1)]; //pick random 1-4 change to length of wordlist
+
+console.log(wordToGuess);
 var wordArray = Array(wordToGuess.length); //Create array same length as word
 
 var wins = 0;
@@ -37,6 +39,9 @@ for ( var i=0; i < wordToGuess.length; i +=1){
 document.onkeyup = function(event) {
     // Determines which key was pressed
     userGuess = event.key;
+
+   // $("#instructions").css("display", "none");
+   // $("#notification").css("display", "none");
 
 //Check if Won
 if( wordArray.join("") != wordToGuess ){  
@@ -62,6 +67,14 @@ if( wordArray.join("") != wordToGuess ){
 
                     console.log("Letter index: " + letterIndex);
 
+                    if( wordArray.join("") === wordToGuess ){ 
+                         console.log("YOU WIN");
+                         $("#notification").text( "YOU WIN" ); 
+                         wins++;
+                         $("#wins").text( wins );
+                    }
+                    
+
                 }else{
                     console.log("Wrong");
                     guessesLeft--;
@@ -73,10 +86,48 @@ if( wordArray.join("") != wordToGuess ){
         }else{
             console.log("Not a letter");
         }
+    }else{
+        $("#notification").html( "YOU LOSE" );
+        console.log("YOU LOSE"); 
     }
 }else{ //END Check if Won
     console.log("YOU WIN");
 }
 }
+
+
+//RESTART
+    $("#play-again").on("click", function(){
+        //Initialize
+        wordToGuess = wordList[Math.floor(Math.random()*((wordList.length-1)-1+1)+1)];
+         wordArray = Array(wordToGuess.length); //Create array same length as word
+         
+         console.log(wordToGuess);
+         
+         guessesLeft = 7;
+
+        $("#guesses-left").text(guessesLeft);
+
+        $("#hangman-ascii").html(hangmanStages[guessesLeft]); //create initial hangman    
+   
+        $("#notification").empty();
+
+        $("#word").empty();
+
+        $("#guessed").empty();
+
+        guessedLetters = [];
+        userGuess = 0;
+        letterIndex = -1;
+
+        //Create Word Blanks
+        for ( var i=0; i < wordToGuess.length; i +=1){
+            var blankLetter = $("<span>");
+            blankLetter.addClass("letter");
+            blankLetter.addClass(`letter-${i}`);
+            blankLetter.text("_");
+            $("#word").append(blankLetter);
+        }
+    });
 
 });
